@@ -37,23 +37,52 @@ const Offer = () => {
           })}
         </div>
         <div className="Offer-right">
-          <div className="price">{data.product_price}</div>
-          {data.product_details.map((detail, index) => {
-            return (
-              <div className="details" key={index}>
-                {detail.MARQUE && <div>{detail.MARQUE}</div>}
-                {detail.ÉTAT && <div>{detail.ÉTAT}</div>}
-                {detail.COULEUR && <div>{detail.COULEUR}</div>}
-                {detail.EMPLACEMENT && <div>{detail.EMPLACEMENT}</div>}
-                {detail["MODES DE PAIEMENT"] && (
-                  <div>{detail["MODES DE PAIEMENT"]}</div>
-                )}
-              </div>
-            );
-          })}
-          <div className="name">{data.product_name}</div>
-          <div className="description">{data.product_description}</div>
-          <div className="owner">{data.owner.account.username}</div>
+          <div className="Offer-right-center">
+            <div className="price">{data.product_price}€</div>
+            <div className="details">
+              {data.product_details.map((detail, index) => {
+                return (
+                  <div key={index}>
+                    {detail.MARQUE && (
+                      <div>
+                        <div className="grey">MARQUE</div>
+                        <div>{detail.MARQUE}</div>{" "}
+                      </div>
+                    )}
+                    {detail.ÉTAT && (
+                      <div>
+                        <div className="grey">ÉTAT</div>
+                        <div>{detail.ÉTAT}</div>{" "}
+                      </div>
+                    )}
+                    {detail.COULEUR && (
+                      <div>
+                        <div className="grey">COULEUR</div>
+                        <div>{detail.COULEUR}</div>{" "}
+                      </div>
+                    )}
+                    {detail.EMPLACEMENT && (
+                      <div>
+                        <div className="grey">EMPLACEMENT</div>
+                        <div>{detail.EMPLACEMENT}</div>{" "}
+                      </div>
+                    )}
+                    {detail["MODES DE PAIEMENT"] && (
+                      <div>
+                        <div className="grey">MODES DE PAIEMENT</div>
+                        <div>{detail["MODES DE PAIEMENT"]}</div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="Offer-right-bottom">
+              <div className="name">{data.product_name}</div>
+              <div className="description grey">{data.product_description}</div>
+              <div className="owner">{data.owner.account.username}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
