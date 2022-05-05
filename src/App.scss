@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.Header {
+  height: 96px;
+  width: 100vw;
+  border: red solid 1px;
+  .top-bar {
+    height: 60%;
+    border-bottom: 1px solid #e9ebeb;
+    .top-bar-center {
+      background-color: bisque;
+      height: 100%;
+      align-items: center;
+      margin: 0 auto;
+      display: flex;
+      width: 65vw;
+      max-width: 1200px;
+      img {
+        height: 60%;
+        flex: 1;
+      }
+      .search-input {
+        border: solid blue 1px;
+        margin-left: 30px;
+        height: 60%;
+        flex: 7;
+        display: flex;
+        justify-content: flex-end;
+        input {
+          width: 75%;
+          height: 100%;
+        }
+      }
+      .logs {
+        border: solid black 1px;
+        height: 50%;
+        margin-left: 30px;
+        flex: 5;
+        display: flex;
+        justify-content: center;
+
+        button {
+          height: 100%;
+        }
+      }
+    }
+  }
+  .low-bar {
+  }
+}
+
+.Content-center {
+  margin: 0 auto;
+  width: 65vw;
+  max-width: 1200px;
+  .Menu {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid black 1px;
+    justify-content: space-around;
+    padding-top: 20px;
+
+    .Card {
+      border: solid 1px pink;
+      margin: 10px 0;
+      width: 208px;
+      height: 395px;
+
+      .Card-picture {
+        height: 70%;
+        width: 100%;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .Card-infos {
+        .Card-price {
+        }
+        .Card-details {
+          .details-size {
+          }
+          .details-brand {
+          }
+        }
+      }
+    }
+  }
+}
+
+.Offer-center {
+  margin: 0 auto;
+  width: 65vw;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  .Offer-left {
+    width: 40%;
+    border: black solid 1px;
+    .picture {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .Offer-right {
+    border: black solid 1px;
+    width: 40%;
+  }
+}
