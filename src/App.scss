@@ -9,7 +9,7 @@ body {
 .Header {
   height: 96px;
   width: 100vw;
-  border: red solid 1px;
+  border-bottom: solid #e9ebeb 1px;
   .top-bar {
     height: 60%;
     border-bottom: 1px solid #e9ebeb;
@@ -130,7 +130,7 @@ body {
       }
       .details {
         padding-bottom: 50px;
-        border-bottom: rgb(161, 159, 159) solid 1px;
+        border-bottom: #e9ebeb solid 1px;
         > div > div {
           border: blue solid 1px;
           display: flex;
@@ -144,7 +144,6 @@ body {
         }
       }
       .Offer-right-bottom {
-        border: black solid 1px;
         display: flex;
         flex-direction: column;
         div {

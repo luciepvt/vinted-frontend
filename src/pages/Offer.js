@@ -15,7 +15,6 @@ const Offer = () => {
         console.log(response.data);
         setData(response.data);
         setIsLoading(false);
-        console.log(data);
       } catch (error) {
         console.log(error.response);
       }
@@ -79,7 +78,7 @@ const Offer = () => {
             </div>
             <div className="Offer-right-bottom">
               <div className="name">{data.product_name}</div>
-              <div className="description grey">{data.product_description}</div>
+              <div className="description ">{data.product_description}</div>
               <div className="owner">{data.owner.account.username}</div>
             </div>
           </div>
