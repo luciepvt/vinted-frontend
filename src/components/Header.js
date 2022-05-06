@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 const Header = ({ logo, signed, setSigned, token }) => {
   const navigate = useNavigate();
+  console.log(token);
   return (
     <div className="Header">
       <div className="top-bar">
@@ -31,8 +32,9 @@ const Header = ({ logo, signed, setSigned, token }) => {
             ) : (
               <button
                 onClick={() => {
+                  Cookies.remove("userToken");
+
                   setSigned(false);
-                  Cookies.remove(token);
                 }}
               >
                 Se déconnecter
