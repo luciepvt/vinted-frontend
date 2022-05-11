@@ -1,52 +1,74 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
-const Header = ({ logo, signed, setSigned, token }) => {
-  const navigate = useNavigate();
-  console.log(token);
+import { useState } from "react";
+import NotLogged from "./NotLogged";
+import Logged from "./Logged";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logo from "../assets/img/vinted-logo.png";
+
+const Header = ({ setUser, token, setToken }) => {
+  const [open, setOpen] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [signup, setSignup] = useState(false);
+
+  const openClose = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
+
   return (
-    <div className="Header">
-      <div className="top-bar">
-        <div className="top-bar-center">
-          <img
-            src={logo}
-            alt="vinted logo"
-            onClick={() => {
-              navigate("/");
-            }}
-          />
-          <div className="search-input">
-            <input type="text" />
+    <header>
+      <nav className="top-bar">
+        <div className="top-bar-container">
+          <div className="top-bar-left">
+            <Link to="/">
+              <img className="header-logo" src={logo} alt="vinted logo" />
+            </Link>
+            <div className="search-bar">
+              <FontAwesomeIcon
+                className="mag-glass-icon"
+                icon={"magnifying-glass"}
+              />
+              <input className="search-input" type="text" />
+            </div>
           </div>
-          <div className="logs">
-            {signed === false ? (
-              <>
-                <Link to="/user/signup">
-                  <button>s'inscrire</button>
-                </Link>
-                <Link to="/user/login">
-                  {" "}
-                  <button>se connecter</button>
-                </Link>
-              </>
+
+          <div className="top-bar-right">
+            {token === null ? (
+              <NotLogged
+                setUser={setUser}
+                setToken={setToken}
+                open={open}
+                openClose={openClose}
+                login={login}
+                setLogin={setLogin}
+                signup={signup}
+                setSignup={setSignup}
+              />
             ) : (
-              <button
-                onClick={() => {
-                  Cookies.remove("userToken");
-
-                  setSigned(false);
-                }}
-              >
-                Se déconnecter
-              </button>
+              <Logged setToken={setToken} open={open} setOpen={setOpen} />
             )}
-
-            <button>vends tes articles</button>
+            <Link to="/publish">
+              {" "}
+              <button className="publish">Vends maintenant</button>
+            </Link>
           </div>
         </div>
-      </div>
-      <div className="low-bar"></div>
-    </div>
+      </nav>
+      <nav className="low-bar">
+        <div className="low-bar-container">
+          <ul>
+            <li>Femmes</li>
+            <li>Hommes</li>
+            <li>Enfants</li>
+            <li>Maison</li>
+            <li>Divertissement</li>
+            <li>Animaux</li>
+            <li>À propos</li>
+            <li>Notre plateforme</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 };
 export default Header;

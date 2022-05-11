@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 const Offer = () => {
@@ -20,7 +20,7 @@ const Offer = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
   return isLoading === true ? (
     <span>Loading...</span>
   ) : (
@@ -81,6 +81,15 @@ const Offer = () => {
               <div className="description ">{data.product_description}</div>
               <div className="owner">{data.owner.account.username}</div>
             </div>
+            <Link
+              to="/payment"
+              state={{
+                product_name: data.product_name,
+                product_price: data.product_price,
+              }}
+            >
+              <button className="payment-btn">Acheter</button>
+            </Link>
           </div>
         </div>
       </div>

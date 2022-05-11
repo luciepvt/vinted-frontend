@@ -1,99 +1,238 @@
-* {
-  box-sizing: border-box;
+:root {
+  --turquoise: #09b1ba;
+  --lightGrey: #999999;
+  --grey: #666666;
+  --border: #dadada;
+  --red: #f03e53;
+  --greyBackground: rgb(218, 218, 218);
 }
-body {
+* {
   margin: 0;
+  box-sizing: border-box;
+  // add font-family
   -webkit-font-smoothing: antialiased;
 }
 
-.Header {
-  height: 96px;
-  width: 100vw;
-  border-bottom: solid #e9ebeb 1px;
-  .top-bar {
-    height: 60%;
-    border-bottom: 1px solid #e9ebeb;
-    .top-bar-center {
-      background-color: bisque;
-      height: 100%;
-      align-items: center;
-      margin: 0 auto;
+body {
+  position: relative;
+  height: 100%;
+  min-height: 95vh;
+}
+
+main {
+  background: var(--greyBackground);
+  height: 95vh;
+}
+
+//GENERAL RULES
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+li {
+  cursor: pointer;
+}
+
+//BTNS
+
+.publish,
+.hero-card button {
+  border: 1px solid var(--turquoise);
+  background-color: var(--turquoise);
+  color: white;
+}
+
+// HEADER
+
+.top-bar-container,
+.low-bar-container {
+  border: solid black 1px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  width: 60%;
+  margin: 0 auto;
+}
+.top-bar,
+.low-bar {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+}
+.top-bar {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  .top-bar-left {
+    display: flex;
+    align-items: center;
+    .header-logo {
+      width: 80px;
+      margin-right: 40px;
+      cursor: pointer;
+    }
+    .search-bar {
+      border: solid 1px black;
       display: flex;
-      width: 65vw;
-      max-width: 1200px;
-      img {
-        height: 60%;
-        flex: 1;
+      align-items: center;
+      justify-content: flex-start;
+      height: 30px;
+      width: 400px;
+      border-radius: 2px;
+
+      .mag-glass-icon {
+        color: #666666;
+        padding-left: 2px;
       }
       .search-input {
-        border: solid blue 1px;
-        margin-left: 30px;
-        height: 60%;
-        flex: 7;
-        display: flex;
-        justify-content: flex-end;
-        input {
-          width: 75%;
-          height: 100%;
-        }
-      }
-      .logs {
-        border: solid black 1px;
-        height: 50%;
-        margin-left: 30px;
-        flex: 5;
-        display: flex;
-        justify-content: center;
-
-        button {
-          height: 100%;
-        }
+        height: 100%;
+        width: 95%;
+        outline: none;
+        border: none;
       }
     }
   }
-  .low-bar {
+}
+// NOT LOGGED
+.top-bar-right {
+  display: flex;
+  .signup-login-btn {
+    background-color: white;
+    border: 1px solid var(--turquoise);
+    color: var(--turquoise);
+  }
+  button {
+    margin-left: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  button:nth-child(2) {
+    margin-right: 40px;
   }
 }
-
-.Content-center {
-  margin: 0 auto;
-  width: 65vw;
-  max-width: 1200px;
-  .Menu {
+// LOGGED (revoir top-bar-right // MODALS)
+.icons-top-bar {
+  display: flex;
+  .bell-icon,
+  .envelope-icon,
+  .heart-icon {
+    width: 30px;
+    size: 30px;
+    filter: opacity(25%);
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  .user-menu {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    border: solid black 1px;
-    justify-content: space-around;
-    padding-top: 20px;
-
-    .Card {
-      border: solid 1px pink;
-      margin: 10px 0;
-      width: 208px;
-      height: 395px;
-
-      .Card-picture {
-        height: 70%;
-        width: 100%;
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
-      }
-      .Card-infos {
-        .Card-price {
-        }
-        .Card-details {
-          .details-size {
+    flex-direction: column;
+    width: 100%;
+    .user-icon {
+      width: 35px;
+      margin: 0 10px 0 15px;
+      width: 30px;
+      size: 30px;
+      filter: opacity(25%);
+      cursor: pointer;
+    }
+    .logged-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      .connexion-modal {
+        position: absolute;
+        top: 60px;
+        right: 28.5%;
+        width: 220px;
+        padding: 10px 15px;
+        background-color: white;
+        box-shadow: 0px 0px 9px -1px #000000;
+        z-index: 1000;
+        .menu-items {
+          .my-account {
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            color: var(--lightGrey);
           }
-          .details-brand {
+          ul {
+            margin-top: 15px;
+            li {
+              width: 100%;
+              font-size: 0.9rem;
+              color: #333333;
+              padding: 8px 10px;
+            }
+            .disconnect-btn {
+              color: var(--red) !important;
+            }
           }
         }
       }
     }
   }
 }
+.low-bar {
+  ul {
+    display: flex;
+    li {
+      padding: 10px 15px;
+      font-size: 0.8rem;
+      color: var(--lightGrey);
+    }
+    li:hover {
+      background-color: rgba(218, 218, 218, 0.603);
+    }
+  }
+}
+
+// HERO
+
+.hero img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  position: relative;
+}
+.hero-card {
+  position: absolute;
+  padding: 40px 20px;
+  width: 20%;
+  min-width: 300px;
+  height: 330px;
+  top: 180px;
+  left: 20%;
+  background-color: white;
+  h1 {
+    font-size: 2.15rem;
+    font-weight: bold;
+    line-height: 2.65rem;
+    width: 75%;
+    margin-bottom: 25px;
+  }
+  button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 13px 20px;
+    border-radius: 5px;
+  }
+  .hero-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--turquoise);
+  }
+}
+
+// OFFER
 
 .Offer-center {
   margin: 0 auto;
@@ -147,7 +286,6 @@ body {
         display: flex;
         flex-direction: column;
         div {
-          //   background-color: pink;
           margin-bottom: 10px;
           font-size: 0.9em;
         }
@@ -160,4 +298,282 @@ body {
       }
     }
   }
+}
+
+//////
+// MODALS
+.signup-login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  .signup-login-container {
+    .close-btn {
+      border: none;
+      padding: 10px !important;
+      margin-left: 310px !important;
+      border-radius: 1000px !important;
+      background-color: white;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .signup-login-links {
+      width: 100%;
+      margin-bottom: 15px;
+      button {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px 14px;
+        background-color: white;
+        border: 1px solid black;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .signup-or-alrealdy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      width: 100%;
+      .registered-already,
+      .back-to-signup {
+        margin: 10px 0 20px 0;
+      }
+    }
+  }
+}
+.signup-email-link,
+.login-with-link,
+.login-email-link,
+.signup-email-line {
+  cursor: pointer;
+  color: var(--turquoise);
+  margin-left: 7px;
+}
+.signup-login-container,
+.login-form-container,
+.signup-form-container,
+.success-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 5px 20px;
+  width: 370px;
+  z-index: 9999;
+  border: 1px solid var(--border);
+}
+.login-form-container,
+.signup-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+}
+////////////
+
+// SIGNUP FORM
+.signup-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  margin: 20px auto;
+  border: 1px solid var(--border);
+  padding: 30px 30px;
+  h1 {
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+  }
+  .newsletter-container,
+  .conditions-container {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 20px;
+    width: 100%;
+    margin-left: 20px;
+  }
+  .newsletter-container {
+    .signup-checkbox-input {
+      margin-right: 10px;
+    }
+    h3 {
+      font-size: 1rem;
+      color: #808080;
+    }
+  }
+  .conditions-container {
+    .conditions-checkbox-input {
+      margin-right: 10px;
+    }
+    p {
+      color: black;
+    }
+  }
+}
+
+// common rules Sign/Log form
+.login-user-input,
+.login-email-input,
+.login-password-input,
+.signup-user-input,
+.signup-email-input,
+.signup-password-input {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+  margin-bottom: 20px;
+  width: 100%;
+  border-width: 1px;
+  font-size: 1rem;
+}
+.login-submit-input,
+.signup-submit-input {
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 4px;
+  border: 1px solid var(--turquoise);
+  background-color: var(--turquoise);
+  color: white;
+  margin-bottom: 20px;
+}
+.password-forgotten,
+.a-problem,
+.already-registered {
+  color: var(--turquoise);
+  cursor: pointer;
+}
+
+.error-message {
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+// PUBLISH
+.publish-container {
+  margin: 0 auto;
+  background-color: white;
+  width: 60%;
+  height: 100%;
+  h1 {
+    justify-content: flex-start;
+    margin: 20px 0;
+  }
+  .top-publish,
+  .middle-publish {
+    margin: 20px 0;
+  }
+  .select-file {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    label {
+      font-size: 1.4rem;
+      cursor: pointer;
+      .select-file-border {
+        margin: 40px;
+        padding: 100px;
+        width: 700px;
+        .select-file-wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 15px;
+          border: 1px solid var(--turquoise);
+          color: var(--turquoise);
+          width: 300px;
+          border-radius: 5px;
+          margin: 0 auto;
+          .add-file {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+    input {
+      display: none;
+    }
+  }
+  .bottom-publish {
+    width: 100%;
+    margin-bottom: 20px;
+    .publish-exchange {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 40px;
+      input {
+        margin-right: 15px;
+      }
+      p {
+        width: 38%;
+      }
+    }
+  }
+  .publish-submit-btn {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    button {
+      justify-content: flex-end;
+      margin-bottom: 40px;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-right: 20px;
+      width: 200px;
+      color: var(--turquoise);
+      background-color: white;
+      border: 1px solid var(--turquoise);
+    }
+  }
+}
+.publish-title,
+.publish-description,
+.publish-brand,
+.publish-size,
+.publish-color,
+.publish-condition,
+.publish-city,
+.publish-price {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  input,
+  textarea {
+    width: 40%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+//CHECKOUT (finir)
+
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 25px;
+  width: 700px;
+  border-radius: 3px;
+  background-color: white;
+}
+.card-element {
+  width: 90%;
+  margin: 40px auto;
 }

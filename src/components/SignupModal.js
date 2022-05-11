@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
 import Input from "../components/Input";
+import axios from "axios";
 
-const Signup = ({ setUser }) => {
+const SignupModal = ({ setUser }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +27,7 @@ const Signup = ({ setUser }) => {
       );
       if (response.data) {
         setUser(response.data.token);
-        navigate("/");
+        navigate("/publish");
       }
     } catch (error) {
       console.log(error.response.status);
@@ -36,12 +36,11 @@ const Signup = ({ setUser }) => {
       }
     }
   };
-
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
       <div className="signup-form-container">
         <h1>S'inscrire</h1>
-        <span>{errorMessage}</span>
+        <span className="error-message">{errorMessage}</span>
         <Input
           className="signup-user-input"
           type="text"
@@ -72,8 +71,8 @@ const Signup = ({ setUser }) => {
           />
           <h3>S'inscrire à notre newsletter</h3>
         </div>
-        <div className="gdpr-container">
-          <input className="gdpr-checkbox-input" type="checkbox" />
+        <div className="conditions-container">
+          <input className="conditions-checkbox-input" type="checkbox" />
           <p>
             En m'inscrivant je confirme que j'ai accepté les Termes & Conditions
             et les Conditions de vente Pro de Vinted, avoir lu la Politique de
@@ -91,4 +90,4 @@ const Signup = ({ setUser }) => {
     </form>
   );
 };
-export default Signup;
+export default SignupModal;
