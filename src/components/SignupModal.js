@@ -23,6 +23,7 @@ const SignupModal = ({ setUser }) => {
       };
       const response = await axios.post(
         `https://lereacteur-vinted-api.herokuapp.com/user/signup`,
+        //`https://my-vinted-backend-project.herokuapp.com/user/signup`
         user
       );
       if (response.data) {

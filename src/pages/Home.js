@@ -15,6 +15,7 @@ const Home = ({ token }) => {
       try {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offers"
+          // "https://my-vinted-backend-project.herokuapp.com/offers
         );
         console.log(response.data);
         setData(response.data);

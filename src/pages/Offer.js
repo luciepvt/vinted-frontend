@@ -11,6 +11,7 @@ const Offer = () => {
       try {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+          //`https://my-vinted-backend-project.herokuapp.com/`
         );
         console.log(response.data);
         setData(response.data);
