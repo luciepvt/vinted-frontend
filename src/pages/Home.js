@@ -31,7 +31,7 @@ const Home = ({ token }) => {
     <div>
       {!token && (
         <div className="hero">
-          <img src={hero} />
+          <img src={hero} alt="hero" />
           <div className="hero-card">
             <h1>Prêts à faire du tri dans vos placards ?</h1>
             <Link to="/publish">

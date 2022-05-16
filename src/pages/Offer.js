@@ -31,7 +31,7 @@ const Offer = () => {
           {data.product_pictures.map((item, index) => {
             return (
               <div className="picture" key={index}>
-                <img src={item.secure_url} alt="offer-item picture" />
+                <img src={item.secure_url} alt="offer-annouce" />
               </div>
             );
           })}

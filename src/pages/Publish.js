@@ -43,7 +43,7 @@ const Publish = ({ token }) => {
         }
       );
       setData(response.data);
-      console.log(response.data);
+      console.log(data);
     } catch (error) {
       console.log(error.response);
     }

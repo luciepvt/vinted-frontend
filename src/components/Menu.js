@@ -25,7 +25,7 @@ const Menu = ({ data }) => {
                   <div className="Card-picture">
                     <img
                       src={product.product_image.secure_url}
-                      alt="offer picture"
+                      alt="offer announce"
                     />
                   </div>
                   <div className="Card-infos">
